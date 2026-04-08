@@ -6,52 +6,42 @@ public class Main {
         try {
             while (true) {
                 System.out.println("""
-                          ENTER :
+                          \nENTER :
                           1.GANERATE SINGLE PASSWORD
                           2.GENERATE MULTIPLE PASSWORD
                           3.EXIT
                         """);
-                        System.out.println("YOUR CHOICE : ");
+                System.out.print("YOUR CHOICE : ");
                 String choice = sc.nextLine().toLowerCase();
+                System.out.println();
 
                 switch (choice) {
                     case "1":
-                        System.out.println("ENTER PASSWORD LENGTH : ");
+                        System.out.print("ENTER PASSWORD LENGTH : ");
                         Integer length = sc.nextInt();
                         sc.nextLine();
 
-                        System.out.println("CHARACTER TYPE :UPPERCASE ,LOWERCASE,NUMBERS,SYMBOLES ");
-                        // String uppercase="qwertyuioplkjhgfdsazxcvbnm";
-                        StringBuilder lowercase="QWERTYUIOPLKJHGFDSAZXCVBNM";
-                        Integer number=1234567890;
-                        String symbole="!@#$%^&*";
+                        System.out.println("CHARACTER TYPE :U=UPPERCASE ,L=LOWERCASE,N=NUMBERS,S=SYMBOLES ");
 
-                        System.out.println("ENTER PASSWORD CHARACTER TYPE : ");
-                         StringBuilder character=new StringBuilder(sc.next().toLowerCase());
+                        System.out.print("ENTER PASSWORD CHARACTER TYPE : ");
+                        String character = sc.nextLine().toLowerCase();
+                         
 
-                            if(character==uppercase){
-                                  service.PasswordService.generatePassword(length, character);
-                            }else if(lowercase){
-                                service.PasswordService.generatePassword(length, character);
-                            }  else if(number){
-                                     service.PasswordService.generatePassword(length, character);
-                                }else if(symbole){
- service.PasswordService.generatePassword(length, character);
-                                }
+                        service.PasswordService.generatePassword(length ,character);
 
                         
 
                         break;
                     case " 2":
-                        System.out.println("ENTER PASSWORD LENGTH : ");
+                        System.out.print("ENTER PASSWORD LENGTH : ");
                         Integer Mlength = sc.nextInt();
 
                         System.out.println("CHARACTER TYPE :UPPERCASE ,LOWERCASE,NUMBERS,SYMBOLES ");
 
-                        System.out.println("ENTER PASSWORD CHARACTER TYPE : ");
+                        System.out.print("ENTER PASSWORD CHARACTER TYPE : ");
                         String Mcharacter = sc.nextLine();
 
-                        System.out.println("ENTER NUMBER OF PASSWORD : ");
+                        System.out.print("ENTER NUMBER OF PASSWORD : ");
 
                         String numberOfPassword = sc.nextLine();
                         service.PasswordService.generatePassword(Mlength, Mcharacter, numberOfPassword);
