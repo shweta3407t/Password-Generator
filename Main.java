@@ -21,15 +21,23 @@ public class Main {
                         Integer length = sc.nextInt();
                         sc.nextLine();
 
-                        System.out.println("CHARACTER TYPE :U=UPPERCASE ,L=LOWERCASE,N=NUMBERS,S=SYMBOLES ");
 
-                        System.out.print("ENTER PASSWORD CHARACTER TYPE : ");
-                        String character = sc.nextLine().toLowerCase();
+                        System.out.print("inclide uppercase ? (y/n): ");
+                        boolean uppercase=sc.nextLine().equalsIgnoreCase( "y");
+
+                        System.out.print("include lowercase ? (y/n) : ");
+                        boolean lowercase=sc.nextLine().equalsIgnoreCase( "y");
+
+                        System.out.print("include number ? (y/n) : ");
+                        boolean number=sc.nextLine().equalsIgnoreCase("y");
+
+                        System.out.print("inclide symbol ? (y/n) : ");
+                        boolean symbol=sc.nextLine().equalsIgnoreCase( "y");
+
                          
-
-                        service.PasswordService.generatePassword(length ,character);
-
-                        
+                        String pass =service.PasswordService. generatePassword(length, uppercase, lowercase, number, symbol);
+                         
+                        System.out.println("Generated password : "+pass);
 
                         break;
                     case " 2":
@@ -52,6 +60,7 @@ public class Main {
 
                         break;
                     default:
+                        System.out.println("invalide option selected ");
                         break;
                 }
             }

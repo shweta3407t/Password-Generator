@@ -1,50 +1,69 @@
 package service;
 
- import java.security.SecureRandom;
+import java.security.SecureRandom;
 
 ;
 
 public class PasswordService {
 
-    public static void generatePassword(Integer length, String character) {
-        String uppercase = "QWERTYUIOPLKJHGFDSAZXCVBNM";
-        String lowercase = "qwertyuioplkjhgfdsazxcvbnm";
-        String numaric = "1234567890";
-        String symbol = "!@#$%^&*";
-        String all= "QWERTYUIOPLKJHGFDSAZXCVBNM"+"qwertyuioplkjhgfdsazxcvbnm"+"1234567890"+"!@#$%^&*";
-        
+    public static String generatePassword(Integer length, boolean u, boolean l, boolean n, boolean s) {
+        while (true) {
+            String uppercase = "QWERTYUIOPLKJHGFDSAZXCVBNM";
 
-        SecureRandom random = new SecureRandom();
-        StringBuilder sb = new StringBuilder(length);
+            String lowercase = "qwertyuioplkjhgfdsazxcvbnm";
+            String numaric = "1234567890";
+            String symbol = "!@#$%&*|{}:";
+            String character = "";
 
-        for (int i = 0; i < length; i++) {
-            if (character.contains("u")) {
-
-                int index = random.nextInt(uppercase.length());
-                sb.append( uppercase.charAt( index));
-
-            } else if (character.contains("l")) {
-                int index = random.nextInt(lowercase.length());
-                sb.append( lowercase.charAt( index));
-            } else if (character.contains("n")) {
-                int index = random.nextInt(numaric.length());
-                sb.append( numaric.charAt( index));
-            } else if (character.contains("s")) {
-                int index = random.nextInt(symbol.length());
-                sb.append( symbol.charAt(index ));
+            if (u) {
+                character += uppercase;
+            }
+            if (l) {
+                character += lowercase;
+            }
+            if (n) {
+                character += numaric;
+            }
+            if (s) {
+                character += symbol;
             }
 
-            else if(character.contains( "ulns")){
-                int index= random.nextInt(all.length());
-                sb.append(all.charAt(index));
+            if (!u && !l && !n && !s) {
+                System.out.println("choose at least one character");
+                continue;
             }
+
+            SecureRandom random = new SecureRandom();
+            StringBuilder password = new StringBuilder();
+
+            while (password.length() < length) {
+                if (u) {
+                    int index = random.nextInt(uppercase.length());
+                    password.append(uppercase.charAt(index));
+
+                }
+                if (l) {
+                    int index = random.nextInt(lowercase.length());
+                    password.append(lowercase.charAt(index));
+                }
+                if (n) {
+                    int index = random.nextInt(numaric.length());
+                    password.append(numaric.charAt(index));
+                }
+                if (s) {
+                    int index = random.nextInt(symbol.length());
+                    password.append(symbol.charAt(index));
+                }
+
+            }
+            return password.toString();
+
         }
-        System.out.println("password : "+sb);
 
     }
 
     public static void generatePassword(Integer length, String character, String numberOfPassword) {
 
     }
- 
+
 }
