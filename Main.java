@@ -78,6 +78,7 @@ public class Main {
                 }
             }
         } catch (Exception e) {
+            sc.close();
             // TODO: handle exception
         }
 
