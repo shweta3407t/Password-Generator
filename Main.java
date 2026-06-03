@@ -25,60 +25,32 @@ public class Main {
                 while (isRunning) {
                     switch (choice) {
                         case "1":
+
                             System.out.print("ENTER PASSWORD LENGTH : ");
                             Integer length = sc.nextInt();
                             sc.nextLine();
 
-                            System.out.print("inclide uppercase ? (y/n): ");
-                            boolean uppercase = sc.nextLine().equalsIgnoreCase("y");
+                            service.PasswordService.includeCharacter(sc, length);
 
-                            System.out.print("include lowercase ? (y/n) : ");
-                            boolean lowercase = sc.nextLine().equalsIgnoreCase("y");
-
-                            System.out.print("include number ? (y/n) : ");
-                            boolean number = sc.nextLine().equalsIgnoreCase("y");
-
-                            System.out.print("inclide symbol ? (y/n) : ");
-                            boolean symbol = sc.nextLine().equalsIgnoreCase("y");
-
-                            String pass = service.PasswordService.generatePassword(length, uppercase, lowercase, number,
-                                    symbol);
-
-                            System.out.println("Generated password : " + pass);
-
+                            isRunning = false;
                             break;
                         case "2":
-                            System.out.print("ENTER PASSWORD LENGTH : ");
+
+                        System.out.print("ENTER PASSWORD LENGTH : ");
                             Integer Mlength = sc.nextInt();
-
-                             //TODO : validate length
                             sc.nextLine();
-
-                            System.out.print("inclide uppercase ? (y/n): ");
-                            boolean MUppercase = sc.nextLine().equalsIgnoreCase("y");
-
-                            System.out.print("include lowercase ? (y/n) : ");
-                            boolean MLowercase = sc.nextLine().equalsIgnoreCase("y");
-
-                            System.out.print("include number ? (y/n) : ");
-                            boolean MNumber = sc.nextLine().equalsIgnoreCase("y");
-
-                            System.out.print("inclide symbol ? (y/n) : ");
-                            boolean MSymbol = sc.nextLine().equalsIgnoreCase("y");
-
-                            System.out.print("ENTER NUMBER OF PASSWORD : ");
+                            
+                            System.out.print("\nENTER NUMBER OF PASSWORD : ");
 
                             Integer numberOfPassword = sc.nextInt();
                             sc.nextLine();
 
-                            for (int i = 1; i < numberOfPassword; i++) {
-                                String Mpass = service.PasswordService.generatePassword(Mlength, MUppercase, MLowercase,
-                                        MNumber, MSymbol);
-                                System.out.println(i + "GENERATED PASSWORD : " + Mpass);
-                            }
+                            service.PasswordService.includeCharacter(sc, Mlength ,numberOfPassword);
 
+                            
+                            isRunning = false;
                             break;
-                        case " 3":
+                        case "3":
                             System.out.println("<<<<<<EXITING PROGRAM>>>>>");
                             System.exit(0);
 
